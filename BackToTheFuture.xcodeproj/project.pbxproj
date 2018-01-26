@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		04BEC37FB6775135CCC91BFF /* Pods_BackToTheFuture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD77B51DF2765C3408BAD9CA /* Pods_BackToTheFuture.framework */; };
+		CE180ED6201B12C500D32094 /* MemorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE180ED5201B12C500D32094 /* MemorialViewController.swift */; };
+		CE180ED8201B18DA00D32094 /* MemorialTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE180ED7201B18DA00D32094 /* MemorialTableViewController.swift */; };
+		CE180EDA201B1A6700D32094 /* MemorialRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE180ED9201B1A6700D32094 /* MemorialRecordViewController.swift */; };
 		CE1C29F9201B0D6500E942F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C29F8201B0D6500E942F2 /* AppDelegate.swift */; };
-		CE1C29FB201B0D6500E942F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C29FA201B0D6500E942F2 /* ViewController.swift */; };
+		CE1C29FB201B0D6500E942F2 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C29FA201B0D6500E942F2 /* DiscoveryViewController.swift */; };
 		CE1C29FE201B0D6500E942F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1C29FC201B0D6500E942F2 /* Main.storyboard */; };
 		CE1C2A00201B0D6500E942F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1C29FF201B0D6500E942F2 /* Assets.xcassets */; };
 		CE1C2A03201B0D6500E942F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1C2A01201B0D6500E942F2 /* LaunchScreen.storyboard */; };
@@ -19,9 +22,12 @@
 		328553279A20B37D4B579B7A /* Pods-BackToTheFuture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackToTheFuture.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackToTheFuture/Pods-BackToTheFuture.release.xcconfig"; sourceTree = "<group>"; };
 		654B1C90A944BB3CD8938B0B /* Pods-BackToTheFuture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackToTheFuture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackToTheFuture/Pods-BackToTheFuture.debug.xcconfig"; sourceTree = "<group>"; };
 		AD77B51DF2765C3408BAD9CA /* Pods_BackToTheFuture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackToTheFuture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE180ED5201B12C500D32094 /* MemorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialViewController.swift; sourceTree = "<group>"; };
+		CE180ED7201B18DA00D32094 /* MemorialTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialTableViewController.swift; sourceTree = "<group>"; };
+		CE180ED9201B1A6700D32094 /* MemorialRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialRecordViewController.swift; sourceTree = "<group>"; };
 		CE1C29F5201B0D6500E942F2 /* BackToTheFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackToTheFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1C29F8201B0D6500E942F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE1C29FA201B0D6500E942F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE1C29FA201B0D6500E942F2 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		CE1C29FD201B0D6500E942F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE1C29FF201B0D6500E942F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE1C2A02201B0D6500E942F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +54,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE180ED4201B124E00D32094 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE1C29FA201B0D6500E942F2 /* DiscoveryViewController.swift */,
+				CE180ED5201B12C500D32094 /* MemorialViewController.swift */,
+				CE180ED7201B18DA00D32094 /* MemorialTableViewController.swift */,
+				CE180ED9201B1A6700D32094 /* MemorialRecordViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		CE1C29EC201B0D6500E942F2 = {
 			isa = PBXGroup;
 			children = (
@@ -69,8 +86,8 @@
 		CE1C29F7201B0D6500E942F2 /* BackToTheFuture */ = {
 			isa = PBXGroup;
 			children = (
+				CE180ED4201B124E00D32094 /* ViewController */,
 				CE1C29F8201B0D6500E942F2 /* AppDelegate.swift */,
-				CE1C29FA201B0D6500E942F2 /* ViewController.swift */,
 				CE1C29FC201B0D6500E942F2 /* Main.storyboard */,
 				CE1C29FF201B0D6500E942F2 /* Assets.xcassets */,
 				CE1C2A01201B0D6500E942F2 /* LaunchScreen.storyboard */,
@@ -223,8 +240,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE1C29FB201B0D6500E942F2 /* ViewController.swift in Sources */,
+				CE1C29FB201B0D6500E942F2 /* DiscoveryViewController.swift in Sources */,
 				CE1C29F9201B0D6500E942F2 /* AppDelegate.swift in Sources */,
+				CE180EDA201B1A6700D32094 /* MemorialRecordViewController.swift in Sources */,
+				CE180ED6201B12C500D32094 /* MemorialViewController.swift in Sources */,
+				CE180ED8201B18DA00D32094 /* MemorialTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K73M6Y2M54;
 				INFOPLIST_FILE = BackToTheFuture/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.yoshinosakura.BackToTheFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -381,6 +402,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K73M6Y2M54;
 				INFOPLIST_FILE = BackToTheFuture/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.yoshinosakura.BackToTheFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
