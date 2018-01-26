@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04BEC37FB6775135CCC91BFF /* Pods_BackToTheFuture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD77B51DF2765C3408BAD9CA /* Pods_BackToTheFuture.framework */; };
 		CE1C29F9201B0D6500E942F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C29F8201B0D6500E942F2 /* AppDelegate.swift */; };
 		CE1C29FB201B0D6500E942F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C29FA201B0D6500E942F2 /* ViewController.swift */; };
 		CE1C29FE201B0D6500E942F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1C29FC201B0D6500E942F2 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		328553279A20B37D4B579B7A /* Pods-BackToTheFuture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackToTheFuture.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackToTheFuture/Pods-BackToTheFuture.release.xcconfig"; sourceTree = "<group>"; };
+		654B1C90A944BB3CD8938B0B /* Pods-BackToTheFuture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackToTheFuture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackToTheFuture/Pods-BackToTheFuture.debug.xcconfig"; sourceTree = "<group>"; };
+		AD77B51DF2765C3408BAD9CA /* Pods_BackToTheFuture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackToTheFuture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1C29F5201B0D6500E942F2 /* BackToTheFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackToTheFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1C29F8201B0D6500E942F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE1C29FA201B0D6500E942F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BEC37FB6775135CCC91BFF /* Pods_BackToTheFuture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		072DB5319DEAD02EFEC1A500 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD77B51DF2765C3408BAD9CA /* Pods_BackToTheFuture.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE1C29EC201B0D6500E942F2 = {
 			isa = PBXGroup;
 			children = (
 				CE1C29F7201B0D6500E942F2 /* BackToTheFuture */,
 				CE1C29F6201B0D6500E942F2 /* Products */,
+				E940E7BBE671E899088AAE09 /* Pods */,
+				072DB5319DEAD02EFEC1A500 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = BackToTheFuture;
 			sourceTree = "<group>";
 		};
+		E940E7BBE671E899088AAE09 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				654B1C90A944BB3CD8938B0B /* Pods-BackToTheFuture.debug.xcconfig */,
+				328553279A20B37D4B579B7A /* Pods-BackToTheFuture.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE1C2A07201B0D6500E942F2 /* Build configuration list for PBXNativeTarget "BackToTheFuture" */;
 			buildPhases = (
+				ABD9B734C1B9E9F37C2ED7F4 /* [CP] Check Pods Manifest.lock */,
 				CE1C29F1201B0D6500E942F2 /* Sources */,
 				CE1C29F2201B0D6500E942F2 /* Frameworks */,
 				CE1C29F3201B0D6500E942F2 /* Resources */,
+				76D93F391B1D7CC8C432F4A8 /* [CP] Embed Pods Frameworks */,
+				ADC45552B8F5024571466EBC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,66 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		76D93F391B1D7CC8C432F4A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BackToTheFuture/Pods-BackToTheFuture-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BackToTheFuture/Pods-BackToTheFuture-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABD9B734C1B9E9F37C2ED7F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BackToTheFuture-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADC45552B8F5024571466EBC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BackToTheFuture/Pods-BackToTheFuture-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE1C29F1201B0D6500E942F2 /* Sources */ = {
@@ -272,6 +359,7 @@
 		};
 		CE1C2A08201B0D6500E942F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 654B1C90A944BB3CD8938B0B /* Pods-BackToTheFuture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +375,7 @@
 		};
 		CE1C2A09201B0D6500E942F2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 328553279A20B37D4B579B7A /* Pods-BackToTheFuture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
