@@ -9,18 +9,39 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discovery View Controller-->
+        <!--Discovery-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DiscoveryViewController" customModule="BackToTheFuture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKI-GS-e8x">
+                                <rect key="frame" x="0.0" y="240" width="375" height="128"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="AFS-hi-Rhx"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FKI-GS-e8x" secondAttribute="bottom" id="7pH-sV-ahF"/>
+                            <constraint firstItem="FKI-GS-e8x" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AwG-Ld-SvR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FKI-GS-e8x" secondAttribute="trailing" id="Nd7-al-t39"/>
+                            <constraint firstItem="FKI-GS-e8x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ULt-GU-cBf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="547-es-jsJ"/>
+                    <navigationItem key="navigationItem" title="Discovery" id="547-es-jsJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="bRy-TL-cZf">
+                            <connections>
+                                <action selector="refresh:" destination="BYZ-38-t0r" id="gJd-xe-tie"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="mapView" destination="FKI-GS-e8x" id="REH-8x-Fzb"/>
                         <segue destination="j6j-Si-LrV" kind="show" id="Sen-N7-Ju3"/>
                     </connections>
                 </viewController>
@@ -80,11 +101,11 @@
             </objects>
             <point key="canvasLocation" x="1828" y="990"/>
         </scene>
-        <!--Item-->
+        <!--Discovery-->
         <scene sceneID="j5d-GH-fIy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LOs-1J-OZR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="yJp-FQ-BAQ"/>
+                    <tabBarItem key="tabBarItem" title="Discovery" image="icon_mapview-deselected" selectedImage="icon_mapview-selected" id="yJp-FQ-BAQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H0V-4G-pmu">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -105,6 +126,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="eFA-Mx-b9E" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6d7-oi-2Jl">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -117,11 +139,11 @@
             </objects>
             <point key="canvasLocation" x="-830" y="497"/>
         </scene>
-        <!--Item-->
+        <!--Memorial-->
         <scene sceneID="cof-eP-Pci">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gs3-RY-6Yz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="bAw-MT-JOT"/>
+                    <tabBarItem key="tabBarItem" title="Memorial" image="icon_listview-deselected" selectedImage="icon_listview-selected" id="bAw-MT-JOT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WnW-f2-c8Q">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -137,6 +159,12 @@
             <point key="canvasLocation" x="74" y="990"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_listview-deselected" width="75" height="50"/>
+        <image name="icon_listview-selected" width="75" height="50"/>
+        <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icon_mapview-selected" width="75" height="50"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XMu-zb-EZU"/>
     </inferredMetricsTieBreakers>
