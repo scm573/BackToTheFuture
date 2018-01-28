@@ -42,30 +42,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="FKI-GS-e8x" id="REH-8x-Fzb"/>
-                        <segue destination="j6j-Si-LrV" kind="show" id="Sen-N7-Ju3"/>
+                        <segue destination="xwF-p3-SP3" kind="show" identifier="recordMemorial" id="hyf-pY-wk8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="815.20000000000005" y="132.68365817091455"/>
-        </scene>
-        <!--Memorial Record View Controller-->
-        <scene sceneID="EM7-pp-vNO">
-            <objects>
-                <viewController id="j6j-Si-LrV" customClass="MemorialRecordViewController" customModule="BackToTheFuture" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="x0f-TF-0ku">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="bmt-PX-eNp"/>
-                    </view>
-                    <connections>
-                        <segue destination="xwF-p3-SP3" kind="show" id="XMu-zb-EZU"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CPp-y0-O2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1828" y="133"/>
         </scene>
         <!--Memorial Table View Controller-->
         <scene sceneID="NSr-D1-FGb">
@@ -79,7 +61,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mwY-ON-DWk"/>
                     <connections>
-                        <segue destination="xwF-p3-SP3" kind="show" id="Pam-lp-jx0"/>
+                        <segue destination="xwF-p3-SP3" kind="show" identifier="showMemorial" id="Pam-lp-jx0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOY-ej-bhX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -93,13 +75,36 @@
                     <view key="view" contentMode="scaleToFill" id="ax8-lu-b1c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="19v-VP-gwT">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QP3-fq-d9d" userLabel="Old Image View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="277"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JkH-A7-2DQ" userLabel="New Image View">
+                                        <rect key="frame" x="0.0" y="277" width="375" height="277"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="19v-VP-gwT" firstAttribute="leading" secondItem="DyV-7W-ZHp" secondAttribute="leading" id="2ZH-JS-rAe"/>
+                            <constraint firstItem="DyV-7W-ZHp" firstAttribute="trailing" secondItem="19v-VP-gwT" secondAttribute="trailing" id="Li1-XX-K5o"/>
+                            <constraint firstItem="19v-VP-gwT" firstAttribute="top" secondItem="DyV-7W-ZHp" secondAttribute="top" id="TrX-e2-jxK"/>
+                            <constraint firstItem="DyV-7W-ZHp" firstAttribute="bottom" secondItem="19v-VP-gwT" secondAttribute="bottom" id="l6l-5O-LC9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DyV-7W-ZHp"/>
                     </view>
+                    <connections>
+                        <outlet property="newImageView" destination="JkH-A7-2DQ" id="jb7-V6-hWX"/>
+                        <outlet property="oldImageView" destination="QP3-fq-d9d" id="VJG-i4-l4A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZa-0L-b0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828" y="990"/>
+            <point key="canvasLocation" x="1764" y="496"/>
         </scene>
         <!--Discovery-->
         <scene sceneID="j5d-GH-fIy">
@@ -166,6 +171,6 @@
         <image name="icon_mapview-selected" width="75" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XMu-zb-EZU"/>
+        <segue reference="hyf-pY-wk8"/>
     </inferredMetricsTieBreakers>
 </document>

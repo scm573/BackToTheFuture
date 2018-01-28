@@ -10,7 +10,6 @@
 		04BEC37FB6775135CCC91BFF /* Pods_BackToTheFuture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD77B51DF2765C3408BAD9CA /* Pods_BackToTheFuture.framework */; };
 		CE180ED6201B12C500D32094 /* MemorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE180ED5201B12C500D32094 /* MemorialViewController.swift */; };
 		CE180ED8201B18DA00D32094 /* MemorialTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE180ED7201B18DA00D32094 /* MemorialTableViewController.swift */; };
-		CE180EDA201B1A6700D32094 /* MemorialRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE180ED9201B1A6700D32094 /* MemorialRecordViewController.swift */; };
 		CE1C29F9201B0D6500E942F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C29F8201B0D6500E942F2 /* AppDelegate.swift */; };
 		CE1C29FB201B0D6500E942F2 /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C29FA201B0D6500E942F2 /* DiscoveryViewController.swift */; };
 		CE1C29FE201B0D6500E942F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1C29FC201B0D6500E942F2 /* Main.storyboard */; };
@@ -31,7 +30,6 @@
 		AD77B51DF2765C3408BAD9CA /* Pods_BackToTheFuture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackToTheFuture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE180ED5201B12C500D32094 /* MemorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialViewController.swift; sourceTree = "<group>"; };
 		CE180ED7201B18DA00D32094 /* MemorialTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialTableViewController.swift; sourceTree = "<group>"; };
-		CE180ED9201B1A6700D32094 /* MemorialRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialRecordViewController.swift; sourceTree = "<group>"; };
 		CE1C29F5201B0D6500E942F2 /* BackToTheFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackToTheFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1C29F8201B0D6500E942F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE1C29FA201B0D6500E942F2 /* DiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 				CE1C29FA201B0D6500E942F2 /* DiscoveryViewController.swift */,
 				CE180ED5201B12C500D32094 /* MemorialViewController.swift */,
 				CE180ED7201B18DA00D32094 /* MemorialTableViewController.swift */,
-				CE180ED9201B1A6700D32094 /* MemorialRecordViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 				CE1C29FB201B0D6500E942F2 /* DiscoveryViewController.swift in Sources */,
 				CED55F86201C9C7E0084FF0C /* FlickrApiResponse.swift in Sources */,
 				CE1C29F9201B0D6500E942F2 /* AppDelegate.swift in Sources */,
-				CE180EDA201B1A6700D32094 /* MemorialRecordViewController.swift in Sources */,
 				CE180ED6201B12C500D32094 /* MemorialViewController.swift in Sources */,
 				CED55F84201C9A560084FF0C /* CoreDataStack.swift in Sources */,
 				CED55F7E201C99300084FF0C /* ReachabilityHelper.swift in Sources */,
