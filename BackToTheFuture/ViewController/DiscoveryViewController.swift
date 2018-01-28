@@ -15,6 +15,7 @@ import MapKit
 import SVProgressHUD
 import Kingfisher
 import ARCL
+import CoreData
 
 class DiscoveryViewController: UIViewController {
 
@@ -58,8 +59,14 @@ class DiscoveryViewController: UIViewController {
         if segue.identifier == "recordMemorial", let photos = photos {
             let vc = segue.destination as! MemorialViewController
             let view = sender as! MKAnnotationView
-            let imageUrl = getImageUrlFor(view.annotation!, in: photos)
-            vc.oldImageUrl = imageUrl
+            getPhotoInfoFor(view.annotation!, in: photos) { photoUrl, time, lat, lng in
+                let memorial = NSEntityDescription.insertNewObject(forEntityName: "Memorial", into: AppDelegate.shared.stack.context) as! Memorial
+                memorial.oldPhotoUrl = photoUrl
+                memorial.oldPhotoTime = time
+                memorial.latitude = lat
+                memorial.longitude = lng
+                vc.memorial = memorial
+            }
         }
     }
     
@@ -86,17 +93,18 @@ extension DiscoveryViewController: MKMapViewDelegate {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             annotationView?.canShowCallout = true
 
-            let imageUrl = getImageUrlFor(annotation, in: photos)
-            if let imageUrl = imageUrl {
-                let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
-                imageView.contentMode = .scaleAspectFill
-                imageView.kf.indicatorType = .activity
-                imageView.kf.setImage(with: URL(string: imageUrl))
-                
-                let button = UIButton(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
-                button.addSubview(imageView)
-                
-                annotationView?.leftCalloutAccessoryView = button
+            getPhotoInfoFor(annotation, in: photos) { photoUrl, _, _, _ in
+                if let photoUrl = photoUrl {
+                    let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
+                    imageView.contentMode = .scaleAspectFill
+                    imageView.kf.indicatorType = .activity
+                    imageView.kf.setImage(with: URL(string: photoUrl))
+                    
+                    let button = UIButton(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
+                    button.addSubview(imageView)
+                    
+                    annotationView?.leftCalloutAccessoryView = button
+                }
             }
         } else {
             annotationView?.annotation = annotation
@@ -109,12 +117,15 @@ extension DiscoveryViewController: MKMapViewDelegate {
         performSegue(withIdentifier: "recordMemorial", sender: view)
     }
     
-    fileprivate func getImageUrlFor(_ annotation: MKAnnotation, in photos: [FlickrApiResponse.Photos.Photo]) -> String? {
-        return photos.first(where: {
+    fileprivate func getPhotoInfoFor(_ annotation: MKAnnotation, in photos: [FlickrApiResponse.Photos.Photo], completionHandler: @escaping((String?, String?, Double, Double) -> Void)) {
+        let targetPhoto = photos.first(where: {
             guard let latString = $0.latitude, let lat = Double(latString) else { return false }
             guard let lngString = $0.longitude, let lng = Double(lngString) else { return false }
             return annotation.coordinate.latitude == lat && annotation.coordinate.longitude == lng
-        })?.url_m
+        })
+        let lat = targetPhoto?.latitude ?? ""
+        let lng = targetPhoto?.longitude ?? ""
+        completionHandler(targetPhoto?.url_m, targetPhoto?.datetaken, Double(lat)!, Double(lng)!)
     }
 }
 

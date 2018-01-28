@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MemorialViewController: UIViewController {
     
@@ -14,7 +15,8 @@ class MemorialViewController: UIViewController {
     @IBOutlet weak var newImageView: UIImageView!
     @IBOutlet weak var actionButton: UIBarButtonItem!
     
-    var oldImageUrl: String?
+    var memorial: Memorial?
+    
     var newImageViewState = NewImageViewState.notSet {
         didSet {
             let item = newImageViewState == .set ? UIBarButtonSystemItem.trash : UIBarButtonSystemItem.camera
@@ -30,18 +32,20 @@ class MemorialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
-        newImageViewState = .notSet
         
-        if let oldImageUrl = oldImageUrl {
-            oldImageView.kf.setImage(with: URL(string: oldImageUrl))
+        guard let memorial = memorial else { return }
+        oldImageView.kf.setImage(with: URL(string: memorial.oldPhotoUrl!))
+        
+        if let newPhotoData = memorial.newPhotoData {
+            newImageViewState = .set
+            newImageView.image = UIImage(data: newPhotoData)
+        } else {
+            newImageViewState = .notSet
             presentCameraController()
         }
     }
     
     @objc func action() {
-        if newImageViewState == .set {
-            //Delete persisted image data
-        }
         presentCameraController()
     }
     
@@ -58,11 +62,22 @@ extension MemorialViewController: UIImagePickerControllerDelegate, UINavigationC
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             newImageView.image = image
             newImageViewState = .set
+            memorial?.newPhotoData = UIImageJPEGRepresentation(image, 1)
+            memorial?.newPhotoTime = getCurrentTimeString()
         }
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension MemorialViewController {
+    fileprivate func getCurrentTimeString() -> String {
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = Date()
+        return dateFormatter.string(from: date)
     }
 }

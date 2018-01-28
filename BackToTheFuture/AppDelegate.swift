@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import FLEX
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var stack = CoreDataStack(modelName: "Model")!
+    static let shared = UIApplication.shared.delegate as! AppDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Uncomment this block if needed
+        #if DEBUG
+            FLEXManager.shared().showExplorer()
+        #endif
+        
+        stack.autoSave(3)
+        
         return true
     }
 
