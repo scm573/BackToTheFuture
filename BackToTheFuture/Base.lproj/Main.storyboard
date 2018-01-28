@@ -68,7 +68,7 @@
             </objects>
             <point key="canvasLocation" x="815" y="990"/>
         </scene>
-        <!--Memorial View Controller-->
+        <!--Memorial-->
         <scene sceneID="7HX-19-LRe">
             <objects>
                 <viewController id="xwF-p3-SP3" customClass="MemorialViewController" customModule="BackToTheFuture" customModuleProvider="target" sceneMemberID="viewController">
@@ -97,6 +97,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DyV-7W-ZHp"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Memorial" id="iHW-2o-iVL"/>
                     <connections>
                         <outlet property="newImageView" destination="JkH-A7-2DQ" id="jb7-V6-hWX"/>
                         <outlet property="oldImageView" destination="QP3-fq-d9d" id="VJG-i4-l4A"/>

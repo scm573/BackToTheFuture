@@ -10,32 +10,54 @@ import UIKit
 
 class MemorialViewController: UIViewController {
     
-    
     @IBOutlet weak var oldImageView: UIImageView!
     @IBOutlet weak var newImageView: UIImageView!
+    @IBOutlet weak var actionButton: UIBarButtonItem!
     
     var oldImageUrl: String?
+    var newImageViewState = NewImageViewState.notSet {
+        didSet {
+            let item = newImageViewState == .set ? UIBarButtonSystemItem.trash : UIBarButtonSystemItem.camera
+            let actionButton =  UIBarButtonItem(barButtonSystemItem: item, target: self, action: #selector(action))
+            self.navigationItem.rightBarButtonItem = actionButton
+        }
+    }
+    enum NewImageViewState {
+        case set
+        case notSet
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
+        newImageViewState = .notSet
         
         if let oldImageUrl = oldImageUrl {
             oldImageView.kf.setImage(with: URL(string: oldImageUrl))
-            
-            let pickerController = UIImagePickerController()
-            pickerController.delegate = self
-            pickerController.sourceType = .camera
-            present(pickerController, animated: true, completion: nil)
+            presentCameraController()
         }
     }
     
+    @objc func action() {
+        if newImageViewState == .set {
+            //Delete persisted image data
+        }
+        presentCameraController()
+    }
+    
+    private func presentCameraController() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = .camera
+        present(pickerController, animated: true, completion: nil)
+    }
 }
 
 extension MemorialViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             newImageView.image = image
+            newImageViewState = .set
         }
         dismiss(animated: true, completion: nil)
     }
