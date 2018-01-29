@@ -49,18 +49,92 @@
             </objects>
             <point key="canvasLocation" x="815.20000000000005" y="132.68365817091455"/>
         </scene>
-        <!--Memorial Table View Controller-->
+        <!--Memorials-->
         <scene sceneID="NSr-D1-FGb">
             <objects>
                 <viewController id="YLk-vj-BmH" customClass="MemorialTableViewController" customModule="BackToTheFuture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MZH-cT-3Nf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AN3-w3-gnV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="jYq-kt-brl" customClass="MemorialTableViewCell" customModule="BackToTheFuture" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jYq-kt-brl" id="XtM-P0-3eh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EMg-EO-HbZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="o5b-Rs-3GA">
+                                                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="99.5"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VFW-ub-V2d" userLabel="Old Image View">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="79.5"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkG-i6-ijc" userLabel="Old Time Label">
+                                                                    <rect key="frame" x="0.0" y="79.5" width="187.5" height="20"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Lqq-cq-jzz">
+                                                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="99.5"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ucf-b5-zrN" userLabel="New Image View">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="82.5"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gY-E1-YVe" userLabel="New Time Label">
+                                                                    <rect key="frame" x="0.0" y="82.5" width="187.5" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="EMg-EO-HbZ" secondAttribute="bottom" id="AtM-Sl-dbz"/>
+                                                <constraint firstItem="EMg-EO-HbZ" firstAttribute="top" secondItem="XtM-P0-3eh" secondAttribute="top" id="UO7-cq-J5c"/>
+                                                <constraint firstAttribute="trailing" secondItem="EMg-EO-HbZ" secondAttribute="trailing" id="hsm-DD-RGw"/>
+                                                <constraint firstItem="EMg-EO-HbZ" firstAttribute="leading" secondItem="XtM-P0-3eh" secondAttribute="leading" id="kP5-OZ-eQx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="newImageView" destination="ucf-b5-zrN" id="iNl-VV-cqf"/>
+                                            <outlet property="newTimeLabel" destination="1gY-E1-YVe" id="pSP-3w-e4Y"/>
+                                            <outlet property="oldImageView" destination="VFW-ub-V2d" id="gfR-5s-eGg"/>
+                                            <outlet property="oldTimeLabel" destination="gkG-i6-ijc" id="dsc-F6-LF9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YLk-vj-BmH" id="GZw-fT-38P"/>
+                                    <outlet property="delegate" destination="YLk-vj-BmH" id="Jip-M0-ZIb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AN3-w3-gnV" firstAttribute="top" secondItem="aa1-iV-eSP" secondAttribute="top" id="BLX-Pl-jb6"/>
+                            <constraint firstItem="AN3-w3-gnV" firstAttribute="leading" secondItem="aa1-iV-eSP" secondAttribute="leading" id="PkA-As-B47"/>
+                            <constraint firstItem="aa1-iV-eSP" firstAttribute="bottom" secondItem="AN3-w3-gnV" secondAttribute="bottom" id="Q0W-GA-PnB"/>
+                            <constraint firstItem="aa1-iV-eSP" firstAttribute="trailing" secondItem="AN3-w3-gnV" secondAttribute="trailing" id="joQ-ga-6E9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aa1-iV-eSP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mwY-ON-DWk"/>
+                    <navigationItem key="navigationItem" title="Memorials" id="mwY-ON-DWk"/>
                     <connections>
+                        <outlet property="tableView" destination="AN3-w3-gnV" id="ip6-uy-fGM"/>
                         <segue destination="xwF-p3-SP3" kind="show" identifier="showMemorial" id="Pam-lp-jx0"/>
                     </connections>
                 </viewController>
@@ -172,6 +246,6 @@
         <image name="icon_mapview-selected" width="75" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hyf-pY-wk8"/>
+        <segue reference="Pam-lp-jx0"/>
     </inferredMetricsTieBreakers>
 </document>

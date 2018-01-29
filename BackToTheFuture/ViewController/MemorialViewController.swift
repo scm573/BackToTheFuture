@@ -64,6 +64,7 @@ extension MemorialViewController: UIImagePickerControllerDelegate, UINavigationC
             newImageViewState = .set
             memorial?.newPhotoData = UIImageJPEGRepresentation(image, 1)
             memorial?.newPhotoTime = getCurrentTimeString()
+            AppDelegate.shared.stack.save()
         }
         dismiss(animated: true, completion: nil)
     }

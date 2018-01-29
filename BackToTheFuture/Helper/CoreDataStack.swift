@@ -93,6 +93,15 @@ extension CoreDataStack {
         }
     }
     
+    func save() {
+        do {
+            try saveContext()
+            print("Saving")
+        } catch {
+            print("Error while saving")
+        }
+    }
+    
     // TODO: Activate auto-save() for saving the context periodically.
     func autoSave(_ delayInSeconds : Int) {
         

@@ -23,8 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FLEXManager.shared().showExplorer()
         #endif
         
-        stack.autoSave(3)
-        
         return true
     }
 

@@ -21,6 +21,7 @@ class DiscoveryViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    let locationManager = CLLocationManager()
     let disposeBag = DisposeBag()
     
     var pages: Int?
@@ -39,20 +40,18 @@ class DiscoveryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SVProgressHUD.show()
-
-        mapView.userLocation.rx
-            .observe(CLLocationCoordinate2D.self, "coordinate")
-            .filterNil()
-            .skip(1) //Skip(0,0)
-            .take(1)
-            .subscribe(
-                onNext: {
-                    self.requestBy($0)
-                    adjustCameraOf(self.mapView, coordinate: self.mapView.userLocation.coordinate)
-                }
-            )
-            .disposed(by: disposeBag)
+        locationManager.delegate = self
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == .authorizedAlways {
+            setMap()
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,9 +76,11 @@ class DiscoveryViewController: UIViewController {
     
     private func requestBy(_ coordinate: CLLocationCoordinate2D) {
         requestPhotosNear(coordinate, pages: pages) { flickrApiResponse in
-            SVProgressHUD.dismiss()
-            self.photos = flickrApiResponse.photos?.photo
-            self.pages = flickrApiResponse.photos?.pages
+            performUIUpdatesOnMain {
+                SVProgressHUD.dismiss()
+                self.photos = flickrApiResponse.photos?.photo
+                self.pages = flickrApiResponse.photos?.pages
+            }
         }
     }
 
@@ -126,6 +127,33 @@ extension DiscoveryViewController: MKMapViewDelegate {
         let lat = targetPhoto?.latitude ?? ""
         let lng = targetPhoto?.longitude ?? ""
         completionHandler(targetPhoto?.url_m, targetPhoto?.datetaken, Double(lat)!, Double(lng)!)
+    }
+}
+
+extension DiscoveryViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            setMap()
+        default:
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    fileprivate func setMap() {
+        SVProgressHUD.show()
+        mapView.userLocation.rx
+            .observe(CLLocationCoordinate2D.self, "coordinate")
+            .filterNil()
+            .skip(1) //Skip(0,0)
+            .take(1)
+            .subscribe(
+                onNext: {
+                    self.requestBy($0)
+                    adjustCameraOf(self.mapView, coordinate: self.mapView.userLocation.coordinate)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }
 
