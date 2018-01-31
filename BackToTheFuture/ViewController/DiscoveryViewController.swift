@@ -14,7 +14,6 @@ import CoreLocation
 import MapKit
 import SVProgressHUD
 import Kingfisher
-import ARCL
 import CoreData
 
 class DiscoveryViewController: UIViewController {
@@ -40,6 +39,7 @@ class DiscoveryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         locationManager.delegate = self
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == .authorizedAlways {
@@ -66,12 +66,19 @@ class DiscoveryViewController: UIViewController {
                 memorial.longitude = lng
                 vc.memorial = memorial
             }
+        } else if segue.identifier == "showAR" {
+            let vc = segue.destination as! ARDiscoveryViewController
+            vc.photos = photos
         }
     }
     
     @IBAction func refresh(_ sender: Any) {
         SVProgressHUD.show()
         requestBy(mapView.camera.centerCoordinate)
+    }
+    
+    @IBAction func showAR(_ sender: Any) {
+        performSegue(withIdentifier: "showAR", sender: nil)
     }
     
     private func requestBy(_ coordinate: CLLocationCoordinate2D) {

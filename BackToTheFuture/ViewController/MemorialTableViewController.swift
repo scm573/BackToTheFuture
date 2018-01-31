@@ -50,7 +50,7 @@ extension MemorialTableViewController: UITableViewDelegate, UITableViewDataSourc
         guard let memorials = memorials else { return cell }
         let oldImageUrl = memorials[indexPath.row].oldPhotoUrl
         cell.oldImageView.kf.setImage(with: URL(string: oldImageUrl!))
-        cell.newImageView.image = UIImage(data: memorials[indexPath.row].newPhotoData!) //TODO: Crashing
+        cell.newImageView.image = UIImage(data: memorials[indexPath.row].newPhotoData!) //TODO: EXC_BAD_ACCESS here. Same even if using NSFetchedResultsController
         cell.oldTimeLabel.text = memorials[indexPath.row].oldPhotoTime
         cell.newTimeLabel.text = memorials[indexPath.row].newPhotoTime
         return cell

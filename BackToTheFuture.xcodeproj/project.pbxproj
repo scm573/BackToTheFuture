@@ -15,6 +15,7 @@
 		CE1C29FE201B0D6500E942F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1C29FC201B0D6500E942F2 /* Main.storyboard */; };
 		CE1C2A00201B0D6500E942F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1C29FF201B0D6500E942F2 /* Assets.xcassets */; };
 		CE1C2A03201B0D6500E942F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1C2A01201B0D6500E942F2 /* LaunchScreen.storyboard */; };
+		CE1CD9442022007D0096C7D3 /* ARDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CD9432022007D0096C7D3 /* ARDiscoveryViewController.swift */; };
 		CE5AA066201E0F5700A923DC /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA065201E0F5700A923DC /* CoreDataHelper.swift */; };
 		CE5AA068201E17E200A923DC /* MemorialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA067201E17E200A923DC /* MemorialTableViewCell.swift */; };
 		CED55F7B201C98F10084FF0C /* FlickrApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED55F7A201C98F10084FF0C /* FlickrApi.swift */; };
@@ -40,6 +41,7 @@
 		CE1C29FF201B0D6500E942F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE1C2A02201B0D6500E942F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE1C2A04201B0D6500E942F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE1CD9432022007D0096C7D3 /* ARDiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDiscoveryViewController.swift; sourceTree = "<group>"; };
 		CE5AA065201E0F5700A923DC /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		CE5AA067201E17E200A923DC /* MemorialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialTableViewCell.swift; sourceTree = "<group>"; };
 		CED55F7A201C98F10084FF0C /* FlickrApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrApi.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				CE1C29FA201B0D6500E942F2 /* DiscoveryViewController.swift */,
 				CE180ED5201B12C500D32094 /* MemorialViewController.swift */,
 				CE180ED7201B18DA00D32094 /* MemorialTableViewController.swift */,
+				CE1CD9432022007D0096C7D3 /* ARDiscoveryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				CED55F80201C99E50084FF0C /* GCDBlackBox.swift in Sources */,
 				CE1C29FB201B0D6500E942F2 /* DiscoveryViewController.swift in Sources */,
 				CED55F86201C9C7E0084FF0C /* FlickrApiResponse.swift in Sources */,
+				CE1CD9442022007D0096C7D3 /* ARDiscoveryViewController.swift in Sources */,
 				CE5AA068201E17E200A923DC /* MemorialTableViewCell.swift in Sources */,
 				CE1C29F9201B0D6500E942F2 /* AppDelegate.swift in Sources */,
 				CE180ED6201B12C500D32094 /* MemorialViewController.swift in Sources */,
