@@ -8,12 +8,16 @@
 
 import UIKit
 
-internal func presentAlert(title: String, message: String, preferredStyle: UIAlertControllerStyle, actionTitle: String) {
-    performUIUpdatesOnMain {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
-        alert.show()
+class AlertHelper {
+
+    static func presentAlert(title: String, message: String, preferredStyle: UIAlertControllerStyle, actionTitle: String) {
+        performUIUpdatesOnMain {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+            alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
+            alert.show()
+        }
     }
+    
 }
 
 extension UIAlertController {

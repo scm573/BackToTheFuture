@@ -12,7 +12,6 @@ import RxCocoa
 import RxOptional
 import CoreLocation
 import MapKit
-import SVProgressHUD
 import Kingfisher
 import CoreData
 
@@ -27,11 +26,11 @@ class DiscoveryViewController: UIViewController {
     var photos: [FlickrApiResponse.Photos.Photo]? {
         didSet {
             performUIUpdatesOnMain {
-                removeAllAnnotationsFrom(self.mapView)
+                MapHelper.removeAllAnnotationsFrom(self.mapView)
                 self.photos?.forEach {
                     guard let latString = $0.latitude, let lat = Double(latString) else { return }
                     guard let lngString = $0.longitude, let lng = Double(lngString) else { return }
-                    addPinTo(self.mapView, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lng), title: $0.datetaken)
+                    MapHelper.addPinTo(self.mapView, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lng), title: $0.datetaken)
                 }
             }
         }
@@ -73,7 +72,6 @@ class DiscoveryViewController: UIViewController {
     }
     
     @IBAction func refresh(_ sender: Any) {
-        SVProgressHUD.show()
         requestBy(mapView.camera.centerCoordinate)
     }
     
@@ -82,9 +80,8 @@ class DiscoveryViewController: UIViewController {
     }
     
     private func requestBy(_ coordinate: CLLocationCoordinate2D) {
-        requestPhotosNear(coordinate, pages: pages) { flickrApiResponse in
+        FlickrApi.requestPhotosNear(coordinate, pages: pages) { flickrApiResponse in
             performUIUpdatesOnMain {
-                SVProgressHUD.dismiss()
                 self.photos = flickrApiResponse.photos?.photo
                 self.pages = flickrApiResponse.photos?.pages
             }
@@ -148,7 +145,6 @@ extension DiscoveryViewController: CLLocationManagerDelegate {
     }
     
     fileprivate func setMap() {
-        SVProgressHUD.show()
         mapView.userLocation.rx
             .observe(CLLocationCoordinate2D.self, "coordinate")
             .filterNil()
@@ -157,7 +153,7 @@ extension DiscoveryViewController: CLLocationManagerDelegate {
             .subscribe(
                 onNext: {
                     self.requestBy($0)
-                    adjustCameraOf(self.mapView, coordinate: self.mapView.userLocation.coordinate)
+                    MapHelper.adjustCameraOf(self.mapView, coordinate: self.mapView.userLocation.coordinate)
                 }
             )
             .disposed(by: disposeBag)

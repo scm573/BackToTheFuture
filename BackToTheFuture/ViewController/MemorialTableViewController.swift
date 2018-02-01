@@ -15,15 +15,11 @@ class MemorialTableViewController: UIViewController {
     
     var memorials: [Memorial]?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let predicate = NSPredicate(value: true)
-        queryDataOf(entityName: "Memorial", predicate: predicate) { fetchedObjects in
+        CoreDataHelper.queryDataOf(entityName: "Memorial", predicate: predicate) { fetchedObjects in
             performUIUpdatesOnMain {
                 self.memorials = fetchedObjects as? [Memorial]
                 self.tableView.reloadData()

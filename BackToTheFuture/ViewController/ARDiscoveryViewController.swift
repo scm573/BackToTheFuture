@@ -35,7 +35,6 @@ class ARDiscoveryViewController: UIViewController {
             performUIUpdatesOnMain {
                 KingfisherManager.shared.retrieveImage(with: imageUrl!, options: nil, progressBlock: nil) { image, _, _, _ in
                     let annotationNode = LocationAnnotationNode(location: location, image: image!)
-//                    annotationNode.scaleRelativeToDistance = true //Images will become too small if enable this scaling
                     self.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
                 }
             }

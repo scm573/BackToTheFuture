@@ -10,5 +10,4 @@ target 'BackToTheFuture' do
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   pod 'ReachabilitySwift'
   pod 'ARCL'
-  pod 'FLEX', '~> 2.0', :configurations => ['Debug']
 end
