@@ -1,9 +1,6 @@
 # BackToTheFuture
 > An Udacity iOS Developer training project.
 
-[![Swift Version][swift-image]][swift-url]  
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
-
 <!---One to two paragraph statement about your product and what it does.--->
 Screenshots are coming.
 <!---![](header.png)--->
@@ -43,7 +40,7 @@ Screenshots are coming.
 - [x] Tapping at one record will bring you to its detail view.
 - [x] You can switch to Discovery view using bottom tab navigation.
 
-### Discovery Detail
+### Memorial Detail
 
 - [x] You can check the detail of a memorial (one pair of old & new photos).
 - [x] For an old photo that you have not memorized, the bottom will show as blank at first.
