@@ -10,4 +10,6 @@ target 'BackToTheFuture' do
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   pod 'ReachabilitySwift'
   pod 'ARCL'
+  pod 'DATAStack'
+  pod 'DATASource'
 end

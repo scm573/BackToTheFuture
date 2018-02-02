@@ -8,77 +8,49 @@
 
 import UIKit
 import Kingfisher
+import DATASource
 
 class MemorialTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var memorials: [Memorial]? {
-        didSet {
-            performUIUpdatesOnMain { self.tableView.reloadData() }
-        }
+    lazy var dataSource: DATASource = {
+        let request: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Memorial")
+        request.sortDescriptors = [NSSortDescriptor(key: "newPhotoTime", ascending: false)]
+        
+        let dataSource = DATASource(tableView: self.tableView, cellIdentifier: "cell", fetchRequest: request, mainContext: AppDelegate.shared.dataStack.mainContext, configuration: { cell, item, indexPath in
+
+            let cell = cell as! MemorialTableViewCell
+            cell.oldImageView.kf.setImage(with: URL(string: (item.value(forKey: "oldPhotoUrl") as? String)!))
+            cell.newImageView.image = UIImage(data: (item.value(forKey: "newPhotoData") as? Data)!)
+            cell.oldTimeLabel.text = item.value(forKey: "oldPhotoTime") as? String
+            cell.newTimeLabel.text = item.value(forKey: "newPhotoTime") as? String
+        })
+        
+        return dataSource
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = dataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let predicate = NSPredicate(value: true)
-        CoreDataHelper.queryDataOf(entityName: "Memorial", predicate: predicate) { fetchedObjects in
-            performUIUpdatesOnMain {
-                self.memorials = fetchedObjects as? [Memorial]
-            }
-        }
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMemorial" {
             let vc = segue.destination as! MemorialViewController
-            let index = sender as! Int
-            vc.memorial = memorials?[index]
+            let indexPath = sender as! IndexPath
+            vc.memorial = dataSource.objectAtIndexPath(indexPath) as? Memorial
         }
     }
 }
 
-extension MemorialTableViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memorials?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MemorialTableViewCell
-        
-        let memorial = memorials?[indexPath.row]
-        if let oldImageUrl = memorial?.oldPhotoUrl,
-            let newImageData = memorial?.newPhotoData, //EXC_BREAKPOINT on main thread
-            let oldTime = memorial?.oldPhotoTime,
-            let newTime = memorial?.newPhotoTime {
-            cell.oldImageView.kf.setImage(with: URL(string: oldImageUrl))
-            cell.newImageView.image = UIImage(data: newImageData)
-            cell.oldTimeLabel.text = oldTime
-            cell.newTimeLabel.text = newTime
-        }
-
-        return cell
-    }
-    
+extension MemorialTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showMemorial", sender: indexPath.row)
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            performUIUpdatesOnMain {
-                do {
-                    let memorial = self.memorials?[indexPath.row]
-                    AppDelegate.shared.stack.context.delete(memorial!)
-                    try AppDelegate.shared.stack.context.save()
-                    self.memorials?.remove(at: indexPath.row)
-                    tableView.reloadData()
-                }
-                catch {
-                    fatalError("Failed when deleting a memorial.")
-                }
-            }
-        }
+        performSegue(withIdentifier: "showMemorial", sender: indexPath)
     }
 }

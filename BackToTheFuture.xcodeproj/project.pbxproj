@@ -16,7 +16,6 @@
 		CE1C2A00201B0D6500E942F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1C29FF201B0D6500E942F2 /* Assets.xcassets */; };
 		CE1C2A03201B0D6500E942F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1C2A01201B0D6500E942F2 /* LaunchScreen.storyboard */; };
 		CE1CD9442022007D0096C7D3 /* ARDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CD9432022007D0096C7D3 /* ARDiscoveryViewController.swift */; };
-		CE5AA066201E0F5700A923DC /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA065201E0F5700A923DC /* CoreDataHelper.swift */; };
 		CE5AA068201E17E200A923DC /* MemorialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AA067201E17E200A923DC /* MemorialTableViewCell.swift */; };
 		CED55F7B201C98F10084FF0C /* FlickrApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED55F7A201C98F10084FF0C /* FlickrApi.swift */; };
 		CED55F7E201C99300084FF0C /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED55F7D201C99300084FF0C /* ReachabilityHelper.swift */; };
@@ -42,7 +41,6 @@
 		CE1C2A02201B0D6500E942F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE1C2A04201B0D6500E942F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1CD9432022007D0096C7D3 /* ARDiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDiscoveryViewController.swift; sourceTree = "<group>"; };
-		CE5AA065201E0F5700A923DC /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		CE5AA067201E17E200A923DC /* MemorialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialTableViewCell.swift; sourceTree = "<group>"; };
 		CED55F7A201C98F10084FF0C /* FlickrApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrApi.swift; sourceTree = "<group>"; };
 		CED55F7D201C99300084FF0C /* ReachabilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityHelper.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 				CED55F81201C9A1E0084FF0C /* AlertHelper.swift */,
 				CED55F83201C9A560084FF0C /* CoreDataStack.swift */,
 				CED55F87201CB19F0084FF0C /* MapHelper.swift */,
-				CE5AA065201E0F5700A923DC /* CoreDataHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -246,6 +243,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BackToTheFuture/Pods-BackToTheFuture-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework",
+				"${BUILT_PRODUCTS_DIR}/DATASource/DATASource.framework",
+				"${BUILT_PRODUCTS_DIR}/DATAStack/DATAStack.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -256,6 +255,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARCL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DATASource.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DATAStack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -318,7 +319,6 @@
 				CED55F84201C9A560084FF0C /* CoreDataStack.swift in Sources */,
 				CED55F7E201C99300084FF0C /* ReachabilityHelper.swift in Sources */,
 				CED55F88201CB19F0084FF0C /* MapHelper.swift in Sources */,
-				CE5AA066201E0F5700A923DC /* CoreDataHelper.swift in Sources */,
 				CED55F82201C9A1E0084FF0C /* AlertHelper.swift in Sources */,
 				CE180ED8201B18DA00D32094 /* MemorialTableViewController.swift in Sources */,
 				CED55F7B201C98F10084FF0C /* FlickrApi.swift in Sources */,

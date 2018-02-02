@@ -16,6 +16,8 @@ class MemorialViewController: UIViewController {
     @IBOutlet weak var actionButton: UIBarButtonItem!
     
     var memorial: Memorial?
+    var tempOldPhotoUrl: String?
+    var tempOldPhotoTime: String?
     
     var newImageViewState = NewImageViewState.notSet {
         didSet {
@@ -31,18 +33,21 @@ class MemorialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.tabBar.isHidden = true
         
-        guard let memorial = memorial else { return }
-        oldImageView.kf.setImage(with: URL(string: memorial.oldPhotoUrl!))
-        
-        if let newPhotoData = memorial.newPhotoData {
+        if let memorial = memorial {
+            oldImageView.kf.setImage(with: URL(string: memorial.oldPhotoUrl!))
             newImageViewState = .set
-            newImageView.image = UIImage(data: newPhotoData)
+            newImageView.image = UIImage(data: memorial.newPhotoData!)
         } else {
+            oldImageView.kf.setImage(with: URL(string: tempOldPhotoUrl!))
             newImageViewState = .notSet
             presentCameraController()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
     }
     
     @objc func action() {
@@ -62,9 +67,20 @@ extension MemorialViewController: UIImagePickerControllerDelegate, UINavigationC
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             newImageView.image = image
             newImageViewState = .set
+            
+            if memorial == nil {
+                memorial = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "Memorial", in: AppDelegate.shared.dataStack.mainContext)!, insertInto: AppDelegate.shared.dataStack.mainContext) as? Memorial
+            }
+            
+            if let oldPhotoUrl = tempOldPhotoUrl {
+                memorial?.oldPhotoUrl = oldPhotoUrl
+            }
+            if let oldPhotoTime = tempOldPhotoTime {
+                memorial?.oldPhotoTime = oldPhotoTime
+            }
             memorial?.newPhotoData = UIImageJPEGRepresentation(image, 1)
             memorial?.newPhotoTime = getCurrentTimeString()
-            AppDelegate.shared.stack.save()
+            try! AppDelegate.shared.dataStack.mainContext.save()
         }
         dismiss(animated: true, completion: nil)
     }

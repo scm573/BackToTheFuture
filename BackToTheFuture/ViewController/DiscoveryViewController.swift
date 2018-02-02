@@ -57,13 +57,9 @@ class DiscoveryViewController: UIViewController {
         if segue.identifier == "recordMemorial", let photos = photos {
             let vc = segue.destination as! MemorialViewController
             let view = sender as! MKAnnotationView
-            getPhotoInfoFor(view.annotation!, in: photos) { photoUrl, time, lat, lng in
-                let memorial = NSEntityDescription.insertNewObject(forEntityName: "Memorial", into: AppDelegate.shared.stack.context) as! Memorial
-                memorial.oldPhotoUrl = photoUrl
-                memorial.oldPhotoTime = time
-                memorial.latitude = lat
-                memorial.longitude = lng
-                vc.memorial = memorial
+            getPhotoInfoFor(view.annotation!, in: photos) { photoUrl, time in
+                vc.tempOldPhotoUrl = photoUrl
+                vc.tempOldPhotoTime = time
             }
         } else if segue.identifier == "showAR" {
             let vc = segue.destination as! ARDiscoveryViewController
@@ -98,7 +94,7 @@ extension DiscoveryViewController: MKMapViewDelegate {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             annotationView?.canShowCallout = true
 
-            getPhotoInfoFor(annotation, in: photos) { photoUrl, _, _, _ in
+            getPhotoInfoFor(annotation, in: photos) { photoUrl, _ in
                 if let photoUrl = photoUrl {
                     let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
                     imageView.contentMode = .scaleAspectFill
@@ -122,15 +118,13 @@ extension DiscoveryViewController: MKMapViewDelegate {
         performSegue(withIdentifier: "recordMemorial", sender: view)
     }
     
-    fileprivate func getPhotoInfoFor(_ annotation: MKAnnotation, in photos: [FlickrApiResponse.Photos.Photo], completionHandler: @escaping((String?, String?, Double, Double) -> Void)) {
+    fileprivate func getPhotoInfoFor(_ annotation: MKAnnotation, in photos: [FlickrApiResponse.Photos.Photo], completionHandler: @escaping((String?, String?) -> Void)) {
         let targetPhoto = photos.first(where: {
             guard let latString = $0.latitude, let lat = Double(latString) else { return false }
             guard let lngString = $0.longitude, let lng = Double(lngString) else { return false }
             return annotation.coordinate.latitude == lat && annotation.coordinate.longitude == lng
         })
-        let lat = targetPhoto?.latitude ?? ""
-        let lng = targetPhoto?.longitude ?? ""
-        completionHandler(targetPhoto?.url_m, targetPhoto?.datetaken, Double(lat)!, Double(lng)!)
+        completionHandler(targetPhoto?.url_m, targetPhoto?.datetaken)
     }
 }
 

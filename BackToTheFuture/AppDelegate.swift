@@ -7,13 +7,12 @@
 //
 
 import UIKit
+import DATAStack
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-    var stack = CoreDataStack(modelName: "Model")!
     static let shared = UIApplication.shared.delegate as! AppDelegate
-
+    let dataStack = DATAStack(modelName:"Model")
 }
 
