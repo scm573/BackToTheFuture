@@ -94,11 +94,13 @@ extension CoreDataStack {
     }
     
     func save() {
-        do {
-            try saveContext()
-            print("Saving")
-        } catch {
-            print("Error while saving")
+        context.performAndWait {
+            do {
+                try saveContext()
+                print("Saving")
+            } catch {
+                print("Error while saving")
+            }
         }
     }
     
