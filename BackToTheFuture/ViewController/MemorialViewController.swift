@@ -15,9 +15,9 @@ class MemorialViewController: UIViewController {
     @IBOutlet weak var newImageView: UIImageView!
     @IBOutlet weak var actionButton: UIBarButtonItem!
     
-    var memorial: Memorial?
     var tempOldPhotoUrl: String?
     var tempOldPhotoTime: String?
+    var memorial: Memorial?
     
     var newImageViewState = NewImageViewState.notSet {
         didSet {
@@ -35,9 +35,9 @@ class MemorialViewController: UIViewController {
         super.viewDidLoad()
         
         if let memorial = memorial {
-            oldImageView.kf.setImage(with: URL(string: memorial.oldPhotoUrl!))
+            oldImageView.kf.setImage(with: URL(string: (memorial.oldPhotoUrl)!))
             newImageViewState = .set
-            newImageView.image = UIImage(data: memorial.newPhotoData!)
+            newImageView.image = UIImage(data: (memorial.newPhotoData)!)
         } else {
             oldImageView.kf.setImage(with: URL(string: tempOldPhotoUrl!))
             newImageViewState = .notSet
@@ -69,9 +69,8 @@ extension MemorialViewController: UIImagePickerControllerDelegate, UINavigationC
             newImageViewState = .set
             
             if memorial == nil {
-                memorial = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "Memorial", in: AppDelegate.shared.dataStack.mainContext)!, insertInto: AppDelegate.shared.dataStack.mainContext) as? Memorial
+                memorial = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "Memorial", in: AppDelegate.shared.stack.context)!, insertInto: AppDelegate.shared.stack.context) as? Memorial
             }
-            
             if let oldPhotoUrl = tempOldPhotoUrl {
                 memorial?.oldPhotoUrl = oldPhotoUrl
             }
@@ -80,7 +79,7 @@ extension MemorialViewController: UIImagePickerControllerDelegate, UINavigationC
             }
             memorial?.newPhotoData = UIImageJPEGRepresentation(image, 1)
             memorial?.newPhotoTime = getCurrentTimeString()
-            try! AppDelegate.shared.dataStack.mainContext.save()
+            try! AppDelegate.shared.stack.context.save()
         }
         dismiss(animated: true, completion: nil)
     }
