@@ -26,7 +26,7 @@ class MemorialTableViewController: UIViewController {
         super.viewDidLoad()
         
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Memorial")
-        fr.sortDescriptors = [NSSortDescriptor(key: "newPhotoTime", ascending: false)]
+        fr.sortDescriptors = [NSSortDescriptor(key: "nowPhotoTime", ascending: false)]
         fr.returnsObjectsAsFaults = false
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: AppDelegate.shared.stack.context, sectionNameKeyPath: nil, cacheName: nil)
     }
@@ -70,9 +70,9 @@ extension MemorialTableViewController: UITableViewDelegate, UITableViewDataSourc
         let memorial = fetchedResultsController?.object(at: indexPath) as? Memorial
         
         if let oldImageUrl = memorial?.oldPhotoUrl,
-            let newImageData = memorial?.newPhotoData,
+            let newImageData = memorial?.nowPhotoData,
             let oldTime = memorial?.oldPhotoTime,
-            let newTime = memorial?.newPhotoTime {
+            let newTime = memorial?.nowPhotoTime {
             cell.oldImageView.kf.setImage(with: URL(string: oldImageUrl))
             cell.newImageView.image = UIImage(data: newImageData)
             cell.oldTimeLabel.text = oldTime
