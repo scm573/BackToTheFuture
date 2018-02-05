@@ -89,26 +89,23 @@ class DiscoveryViewController: UIViewController {
 extension DiscoveryViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let photos = photos else { return nil }
+        
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "pin") as? MKPinAnnotationView
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-            annotationView?.canShowCallout = true
+        annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        annotationView?.canShowCallout = true
 
-            getPhotoInfoFor(annotation, in: photos) { photoUrl, _ in
-                if let photoUrl = photoUrl {
-                    let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
-                    imageView.contentMode = .scaleAspectFill
-                    imageView.kf.indicatorType = .activity
-                    imageView.kf.setImage(with: URL(string: photoUrl))
-                    
-                    let button = UIButton(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
-                    button.addSubview(imageView)
-                    
-                    annotationView?.leftCalloutAccessoryView = button
-                }
+        getPhotoInfoFor(annotation, in: photos) { photoUrl, _ in
+            if let photoUrl = photoUrl {
+                let imageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
+                imageView.contentMode = .scaleAspectFill
+                imageView.kf.indicatorType = .activity
+                imageView.kf.setImage(with: URL(string: photoUrl))
+                
+                let button = UIButton(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
+                button.addSubview(imageView)
+                
+                annotationView?.leftCalloutAccessoryView = button
             }
-        } else {
-            annotationView?.annotation = annotation
         }
         
         return annotationView

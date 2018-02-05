@@ -32,7 +32,7 @@ Screenshots are coming.
 ### AR Discovery
 
 - [x] Look surround while holding your iPhone, the photos will show at their directions.
-- [x] Swipe down will bring you back to 2D Discovery view.
+- [x] Swiping down will bring you back to 2D Discovery view.
 
 ### Memorial Table
 
