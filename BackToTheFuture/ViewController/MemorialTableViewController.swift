@@ -16,15 +16,15 @@ class MemorialTableViewController: UIViewController {
     
     lazy var dataSource: DATASource = {
         let request: NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Memorial")
-        request.sortDescriptors = [NSSortDescriptor(key: "newPhotoTime", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: "nowPhotoTime", ascending: false)]
         
         let dataSource = DATASource(tableView: self.tableView, cellIdentifier: "cell", fetchRequest: request, mainContext: AppDelegate.shared.dataStack.mainContext, configuration: { cell, item, indexPath in
 
             let cell = cell as! MemorialTableViewCell
             cell.oldImageView.kf.setImage(with: URL(string: (item.value(forKey: "oldPhotoUrl") as? String)!))
-            cell.newImageView.image = UIImage(data: (item.value(forKey: "newPhotoData") as? Data)!)
+            cell.newImageView.image = UIImage(data: (item.value(forKey: "nowPhotoData") as? Data)!)
             cell.oldTimeLabel.text = item.value(forKey: "oldPhotoTime") as? String
-            cell.newTimeLabel.text = item.value(forKey: "newPhotoTime") as? String
+            cell.newTimeLabel.text = item.value(forKey: "nowPhotoTime") as? String
         })
         
         return dataSource
@@ -52,5 +52,6 @@ class MemorialTableViewController: UIViewController {
 extension MemorialTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showMemorial", sender: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

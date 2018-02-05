@@ -37,7 +37,7 @@ class MemorialViewController: UIViewController {
         if let memorial = memorial {
             oldImageView.kf.setImage(with: URL(string: memorial.oldPhotoUrl!))
             newImageViewState = .set
-            newImageView.image = UIImage(data: memorial.newPhotoData!)
+            newImageView.image = UIImage(data: memorial.nowPhotoData!)
         } else {
             oldImageView.kf.setImage(with: URL(string: tempOldPhotoUrl!))
             newImageViewState = .notSet
@@ -78,8 +78,8 @@ extension MemorialViewController: UIImagePickerControllerDelegate, UINavigationC
             if let oldPhotoTime = tempOldPhotoTime {
                 memorial?.oldPhotoTime = oldPhotoTime
             }
-            memorial?.newPhotoData = UIImageJPEGRepresentation(image, 1)
-            memorial?.newPhotoTime = getCurrentTimeString()
+            memorial?.nowPhotoData = UIImageJPEGRepresentation(image, 1)
+            memorial?.nowPhotoTime = getCurrentTimeString()
             try! AppDelegate.shared.dataStack.mainContext.save()
         }
         dismiss(animated: true, completion: nil)
